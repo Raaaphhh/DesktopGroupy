@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopGroupyV1"
+        xmlns:controlUser="clr-namespace:DesktopGroupyV1.Views.ControlUser"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -11,6 +12,10 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0">
             <Button Content="TestConnexion"
@@ -26,9 +31,12 @@
                 Width="150"
                 Height="40"
                 Click="Open_Page_Produit"
-                Grid.Column="1">    
+                Grid.Column="1">
             </Button>
         </StackPanel>
 
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
+            <controlUser:UserControlTest />
+        </StackPanel>
     </Grid>
 </Window>

@@ -10,22 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DesktopGroupyV1.Views
+namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class ViewProduits : Window
+    public partial class UserControlTest : UserControl
     {
-        public ViewProduits()
+        public UserControlTest()
         {
             InitializeComponent();
-        }
-
-        public void Retour(object sender, RoutedEventArgs e)
-        {
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
         }
     }
 }

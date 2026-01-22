@@ -26,9 +26,9 @@ namespace DesktopGroupyV1
 
         private void Open_Page_Produit(object sender, RoutedEventArgs e)
         {
-            ViewProduits produitPage = new ViewProduits();
-
-            produitPage.Show();
+            var viewProduits = new ViewProduits();
+            viewProduits.Show();
+            this.Close();
         }
 
         private void Test_Connexion(object sender, RoutedEventArgs e)

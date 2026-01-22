@@ -7,5 +7,12 @@
         mc:Ignorable="d"
         Title="ViewProduits" Height="450" Width="800">
     <Grid>
+        <Button Content="Retour"
+                Width="100"
+                Height="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Click="Retour"/>
     </Grid>
 </Window>
