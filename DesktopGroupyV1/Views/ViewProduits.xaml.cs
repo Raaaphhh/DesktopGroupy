@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace DesktopGroupyV1.View
+namespace DesktopGroupyV1.Views
 {
     /// <summary>
     /// Logique d'interaction pour ViewProduits.xaml
@@ -22,6 +22,11 @@ namespace DesktopGroupyV1.View
         public ViewProduits()
         {
             InitializeComponent();
+        }
+
+        public void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

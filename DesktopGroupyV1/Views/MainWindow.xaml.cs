@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DesktopGroupyV1.Data;
 using DesktopGroupyV1.ViewModels;
+using DesktopGroupyV1.Views;
 
 namespace DesktopGroupyV1
 {
@@ -21,6 +22,13 @@ namespace DesktopGroupyV1
             InitializeComponent();
             vm = new BaseViewModel();
             DataContext = vm;
+        }
+
+        private void Open_Page_Produit(object sender, RoutedEventArgs e)
+        {
+            ViewProduits produitPage = new ViewProduits();
+
+            produitPage.Show();
         }
 
         private void Test_Connexion(object sender, RoutedEventArgs e)
