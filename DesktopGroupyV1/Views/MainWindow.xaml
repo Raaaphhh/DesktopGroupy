@@ -18,25 +18,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Button Content="TestConnexion"
-                Width="150"
-                Height="40"
-                Click="Test_Connexion"
-                Grid.Column="0">
-            </Button>
+            <ContentControl x:Name="MainContent"></ContentControl>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
-            <Button Content="Produit"
-                Width="150"
-                Height="40"
-                Click="Open_Page_Produit"
-                Grid.Column="1">
-            </Button>
-        </StackPanel>
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="10">
-            <controlUser:UserControlTest />
         </StackPanel>
     </Grid>
 </Window>

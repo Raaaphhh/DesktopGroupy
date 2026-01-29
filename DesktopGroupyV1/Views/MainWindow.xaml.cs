@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using DesktopGroupyV1.Data;
 using DesktopGroupyV1.ViewModels;
 using DesktopGroupyV1.Views;
+using DesktopGroupyV1.Views.ControlUser;
 
 namespace DesktopGroupyV1
 {
@@ -22,13 +23,13 @@ namespace DesktopGroupyV1
             InitializeComponent();
             vm = new BaseViewModel();
             DataContext = vm;
+            AfficheUserControl();
         }
 
-        private void Open_Page_Produit(object sender, RoutedEventArgs e)
+        public void AfficheUserControl()
         {
-            var viewProduits = new ViewProduits();
-            viewProduits.Show();
-            this.Close();
+            MainContent.Visibility = Visibility.Visible;
+            MainContent.Content = new UserControlLogin();
         }
 
         private void Test_Connexion(object sender, RoutedEventArgs e)
