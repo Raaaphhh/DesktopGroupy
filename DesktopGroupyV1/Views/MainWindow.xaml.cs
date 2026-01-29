@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.Intrinsics.X86;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,8 +13,9 @@ using DesktopGroupyV1.Data;
 using DesktopGroupyV1.ViewModels;
 using DesktopGroupyV1.Views;
 using DesktopGroupyV1.Views.ControlUser;
+using Microsoft.VisualBasic;
 
-namespace DesktopGroupyV1
+namespace DesktopGroupyV1.Views
 {
     public partial class MainWindow : Window
     {
@@ -23,13 +25,24 @@ namespace DesktopGroupyV1
             InitializeComponent();
             vm = new BaseViewModel();
             DataContext = vm;
-            AfficheUserControl();
         }
 
-        public void AfficheUserControl()
+        private void ConnexionApp(object sender, RoutedEventArgs e)
         {
-            MainContent.Visibility = Visibility.Visible;
-            MainContent.Content = new UserControlLogin();
+            string email = EmailText.Text;
+            string pwd = PasswordBox.Password;  
+            bool connexion = vm.IsConnected(email, pwd); 
+            if (!connexion)
+            {
+                MessageBox.Show("Échec de la connexion. Veuillez vérifier vos informations d'identification.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else
+            {
+                Dashboard dashboard = new Dashboard();
+                this.Close();
+                dashboard.Show();
+            }
         }
 
         private void Test_Connexion(object sender, RoutedEventArgs e)

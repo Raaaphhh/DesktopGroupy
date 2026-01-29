@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,16 @@ namespace DesktopGroupyV1.ViewModels
         public BaseViewModel() 
         {
             _db = new GroupyContext();
+        }
+
+        public bool IsConnected(string email, string pwd)
+        {
+            bool connected = false;
+            if (email == null && pwd == null)
+            {
+                connected = false;
+            }
+            return connected;
         }
 
         public bool testConnexion() 
