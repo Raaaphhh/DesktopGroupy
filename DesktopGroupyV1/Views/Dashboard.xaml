@@ -4,9 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopGroupyV1.Views"
+        xmlns:uc="clr-namespace:DesktopGroupyV1.Views.ControlUser"
         mc:Ignorable="d"
         Title="Dashboard" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Colonne gauche -->
+        <uc:NavBar Grid.Column="0"/>
+
+        <!-- Colonne droite : un grid avec des lignes -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="LightGray">
+                <TextBlock Text="HEADER" VerticalAlignment="Center" Margin="10"/>
+            </Border>
+
+            <ContentControl x:Name="ContentArea" Grid.Row="1">
+                <uc:KPIs/>
+            </ContentControl>
+
+            <Border Grid.Row="2" Background="LightGray">
+                <TextBlock Text="FOOTER" VerticalAlignment="Center" Margin="10"/>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

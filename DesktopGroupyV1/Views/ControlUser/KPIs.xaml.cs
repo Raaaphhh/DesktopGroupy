@@ -15,18 +15,14 @@ using System.Windows.Shapes;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class UserControlLogin : UserControl
+    /// <summary>
+    /// Logique d'interaction pour KPIs.xaml
+    /// </summary>
+    public partial class KPIs : UserControl
     {
-        public UserControlLogin()
+        public KPIs()
         {
             InitializeComponent();
-        }
-
-        public void Login(object sender, RoutedEventArgs e)
-        {
-            string email = UsernameTextBox.Text;
-            string password = PasswordBox.Password;
-
         }
     }
 }

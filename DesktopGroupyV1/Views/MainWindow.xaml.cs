@@ -13,7 +13,7 @@ using DesktopGroupyV1.Data;
 using DesktopGroupyV1.Models;
 using DesktopGroupyV1.ViewModels;
 using DesktopGroupyV1.Views;
-using DesktopGroupyV1.Views.ControlUser;
+//using DesktopGroupyV1.Views.ControlUser;
 using Microsoft.VisualBasic;
 
 namespace DesktopGroupyV1.Views
