@@ -43,6 +43,7 @@ namespace DesktopGroupyV1.Views
                 this.Close();
                 dashboard.Show();
             }
+            // faire une variable global constante pour stocker le user connecté.
         }
 
         private void Test_Connexion(object sender, RoutedEventArgs e)

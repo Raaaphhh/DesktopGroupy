@@ -20,9 +20,35 @@ namespace DesktopGroupyV1.ViewModels
         public bool IsConnected(string email, string pwd)
         {
             bool connected = false;
-            if (email == null && pwd == null)
+            if (email == "" && pwd == "")
             {
                 connected = false;
+            }
+            else
+            {
+                // appeler fonction de connxeion a la base. 
+                // Si c'est bon on tente la connexion du user. 
+                try
+                {
+                    bool connectDb = _db.Database.CanConnect();
+                    if (connectDb)
+                    {
+                        var user = _db.Vendeurs.FirstOrDefault(u => u.Email == email && u.MotDePasse == pwd);
+                        if (user != null)
+                        {
+                            connected = true;
+                        }
+                        else
+                        {
+                            connected = false;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    connected = false;
+                    // Dans ce cas on renvoie un message d'erreur
+                }
             }
             return connected;
         }
