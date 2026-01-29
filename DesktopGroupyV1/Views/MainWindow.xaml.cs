@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DesktopGroupyV1.Data;
+using DesktopGroupyV1.Models;
 using DesktopGroupyV1.ViewModels;
 using DesktopGroupyV1.Views;
 using DesktopGroupyV1.Views.ControlUser;
@@ -35,27 +36,12 @@ namespace DesktopGroupyV1.Views
             if (!connexion)
             {
                 MessageBox.Show("Échec de la connexion. Veuillez vérifier vos informations d'identification.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-
             }
             else
             {
                 Dashboard dashboard = new Dashboard();
                 this.Close();
                 dashboard.Show();
-            }
-            // faire une variable global constante pour stocker le user connecté.
-        }
-
-        private void Test_Connexion(object sender, RoutedEventArgs e)
-        {
-            bool reussi = vm.testConnexion();
-            if (reussi)
-            {
-                MessageBox.Show("Test de connexion terminé.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else
-            {
-                MessageBox.Show("Échec du test de connexion.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

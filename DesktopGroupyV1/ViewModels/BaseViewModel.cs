@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DesktopGroupyV1.Data;
+using DesktopGroupyV1.Models;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace DesktopGroupyV1.ViewModels
@@ -26,8 +27,6 @@ namespace DesktopGroupyV1.ViewModels
             }
             else
             {
-                // appeler fonction de connxeion a la base. 
-                // Si c'est bon on tente la connexion du user. 
                 try
                 {
                     bool connectDb = _db.Database.CanConnect();
@@ -36,6 +35,7 @@ namespace DesktopGroupyV1.ViewModels
                         var user = _db.Vendeurs.FirstOrDefault(u => u.Email == email && u.MotDePasse == pwd);
                         if (user != null)
                         {
+                            Session.currentVendeurConnected = user;
                             connected = true;
                         }
                         else
@@ -47,26 +47,9 @@ namespace DesktopGroupyV1.ViewModels
                 catch (Exception ex)
                 {
                     connected = false;
-                    // Dans ce cas on renvoie un message d'erreur
                 }
             }
             return connected;
-        }
-
-        public bool testConnexion() 
-        {
-            bool reussi = false; 
-            try
-            {
-                bool connectDb = _db.Database.CanConnect();
-                reussi = connectDb;
-                Console.WriteLine("Connection OK");
-            }
-            catch (Exception ex) 
-            {
-                Console.WriteLine("Connection failed: " + ex.Message);
-            }
-            return reussi;
         }
     }
 }

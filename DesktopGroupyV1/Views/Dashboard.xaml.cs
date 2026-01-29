@@ -19,6 +19,7 @@ namespace DesktopGroupyV1.Views
         public Dashboard()
         {
             InitializeComponent();
+            var vendeurConnected = Data.Session.currentVendeurConnected;
         }
     }
 }
