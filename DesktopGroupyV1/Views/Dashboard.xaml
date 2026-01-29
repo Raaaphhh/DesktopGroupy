@@ -13,22 +13,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Colonne gauche -->
+        <!-- Menu / NavBar -->
         <uc:NavBar Grid.Column="0"/>
 
-        <!-- Colonne droite : un grid avec des lignes -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" Background="LightGray">
-                <TextBlock Text="HEADER" VerticalAlignment="Center" Margin="10"/>
+            <Border Grid.Row="1" Background="LightGray">
+                <TextBlock Text="BODY" VerticalAlignment="Center" Margin="10"/>
             </Border>
 
-            <ContentControl x:Name="ContentArea" Grid.Row="1">
+            <ContentControl x:Name="ContentArea" Grid.Row="0">
                 <uc:KPIs/>
             </ContentControl>
 

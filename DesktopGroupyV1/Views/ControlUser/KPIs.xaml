@@ -12,26 +12,23 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Bloc KPI 1 -->
         <Border Grid.Column="0" Margin="10" Background="#FF007ACC" CornerRadius="10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Ventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Total Ventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="150" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <!-- Bloc KPI 2 -->
         <Border Grid.Column="1" Margin="10" Background="#FF28A745" CornerRadius="10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Objectifs" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="200" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Ventes en cours" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding VentesEnCours}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <!-- Bloc KPI 3 -->
         <Border Grid.Column="2" Margin="10" Background="#FFFFC107" CornerRadius="10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Taux de Conversion" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Ventes terminés" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="75%" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>

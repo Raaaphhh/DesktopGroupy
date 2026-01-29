@@ -24,5 +24,10 @@ namespace DesktopGroupyV1.Views.ControlUser
         {
             InitializeComponent();
         }
+
+        public int recupInfoKPIs()
+        {
+            return 0; 
+        }
     }
 }

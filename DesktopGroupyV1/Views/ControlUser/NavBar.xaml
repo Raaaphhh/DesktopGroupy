@@ -20,7 +20,9 @@
                            FontWeight="Bold" 
                            Margin="10" />
                 <ListBox x:Name="NavBarMenu" Background="#FF2D2D30" Foreground="White" BorderThickness="0">
-                    <ListBoxItem Content="Dashboard" Padding="10" />
+                    <!--<ListBoxItem>
+                        <Button Content="Dashboard" Click=""/>
+                    </ListBoxItem>-->
                     <ListBoxItem Content="KPIs" Padding="10" />
                     <ListBoxItem Content="Rapports" Padding="10" />
                     <ListBoxItem Content="Paramètres" Padding="10" />
