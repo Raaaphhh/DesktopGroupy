@@ -15,14 +15,14 @@
         <Border Grid.Column="0" Margin="10" Background="#FF007ACC" CornerRadius="10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Total Ventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding TotalVentes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding TotalPreventes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
         <Border Grid.Column="1" Margin="10" Background="#FF28A745" CornerRadius="10">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Ventes en cours" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding VentesEnCours}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding TotalPreventesExpediees}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 

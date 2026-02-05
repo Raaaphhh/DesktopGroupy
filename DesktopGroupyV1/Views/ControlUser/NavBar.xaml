@@ -24,7 +24,7 @@
                         <Button Content="Dashboard" Click=""/>
                     </ListBoxItem>-->
                     <ListBoxItem Content="KPIs" Padding="10" />
-                    <ListBoxItem Content="Rapports" Padding="10" />
+                    <!--<ListBoxItem Content="Rapports" Padding="10" />-->
                     <ListBoxItem Content="Paramètres" Padding="10" />
                     <ListBoxItem Content="Aide" Padding="10" />
                 </ListBox>

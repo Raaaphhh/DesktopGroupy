@@ -21,12 +21,6 @@ namespace DesktopGroupyV1.Views
         {
             InitializeComponent();
             var vendeurConnected = Data.Session.currentVendeurConnected;
-
         }
-
-        //public Produit GetProduitVendeur()
-        //{
-        //    return;  
-        //}
     }
 }

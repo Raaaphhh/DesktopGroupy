@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesktopGroupyV1.Models;
+using DesktopGroupyV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,19 +17,15 @@ using System.Windows.Shapes;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    /// <summary>
-    /// Logique d'interaction pour KPIs.xaml
-    /// </summary>
     public partial class KPIs : UserControl
     {
+        ProduitViewModel vm; 
         public KPIs()
         {
             InitializeComponent();
-        }
-
-        public int recupInfoKPIs()
-        {
-            return 0; 
+            vm = new ProduitViewModel();
+            vm.chargerInfos();
+            DataContext = vm;
         }
     }
 }

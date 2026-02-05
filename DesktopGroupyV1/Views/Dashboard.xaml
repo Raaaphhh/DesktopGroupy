@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Menu / NavBar -->
+        <!-- Menu -->
         <uc:NavBar Grid.Column="0"/>
 
         <Grid Grid.Column="1">
@@ -24,7 +24,7 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="1" Background="LightGray">
-                <TextBlock Text="BODY" VerticalAlignment="Center" Margin="10"/>
+                <TextBlock Text="le corps je dois continuer a faire" VerticalAlignment="Center" Margin="10"/>
             </Border>
 
             <ContentControl x:Name="ContentArea" Grid.Row="0">
@@ -32,7 +32,7 @@
             </ContentControl>
 
             <Border Grid.Row="2" Background="LightGray">
-                <TextBlock Text="FOOTER" VerticalAlignment="Center" Margin="10"/>
+                <TextBlock Text="footer je verrais si besoin" VerticalAlignment="Center" Margin="10"/>
             </Border>
         </Grid>
     </Grid>
