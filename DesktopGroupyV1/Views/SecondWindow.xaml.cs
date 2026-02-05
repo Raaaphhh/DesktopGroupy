@@ -20,10 +20,22 @@ namespace DesktopGroupyV1.Views
         public SecondWindow()
         {
             InitializeComponent();
-            OpenUserControl();
+            OpenUserControlFirst();
         }
-        private void OpenUserControl()
+        private void OpenUserControlFirst()
         {
+            ContentArea.Visibility = Visibility.Visible;
+            ContentArea.Content = new Dashboard();
+        }
+        public void OpenStockView(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility = Visibility.Visible;
+            ContentArea.Content = new Stock();
+        }
+
+        public void OpenDashboard(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility = Visibility.Visible;
             ContentArea.Content = new Dashboard();
         }
     }

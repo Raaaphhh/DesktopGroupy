@@ -1,5 +1,4 @@
-﻿using DesktopGroupyV1.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +15,11 @@ using System.Windows.Shapes;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class Dashboard : UserControl
+    public partial class DashboardDataTable : UserControl
     {
-        ProduitViewModel vm; 
-        public Dashboard()
+        public DashboardDataTable()
         {
             InitializeComponent();
-            vm = new ProduitViewModel();
-            DataContext = vm;
         }
     }
 }

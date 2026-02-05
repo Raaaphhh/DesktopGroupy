@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class NavBar : UserControl
+    public partial class Stock : UserControl
     {
-        public NavBar()
+        public Stock()
         {
             InitializeComponent();
         }
