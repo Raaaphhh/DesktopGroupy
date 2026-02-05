@@ -6,7 +6,19 @@
              xmlns:local="clr-namespace:DesktopGroupyV1.Views.ControlUser"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="White">
+        <DataGrid x:Name="DataTable"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  HeadersVisibility="Column"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Colonne 1" Binding="{Binding Colonne1}" Width="*"/>
+                <DataGridTextColumn Header="Colonne 2" Binding="{Binding Colonne2}" Width="*"/>
+                <DataGridTextColumn Header="Colonne 3" Binding="{Binding Colonne3}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
