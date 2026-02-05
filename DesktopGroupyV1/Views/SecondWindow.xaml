@@ -1,4 +1,4 @@
-﻿<Window x:Class="DesktopGroupyV1.Views.Dashboard"
+﻿<Window x:Class="DesktopGroupyV1.Views.SecondWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,34 +6,25 @@
         xmlns:local="clr-namespace:DesktopGroupyV1.Views"
         xmlns:uc="clr-namespace:DesktopGroupyV1.Views.ControlUser"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800">
+        Title="SecondWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Menu -->
-        <uc:NavBar Grid.Column="0"/>
+        <uc:NavBar Grid.Column="0"></uc:NavBar>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="1" Background="LightGray">
-                <TextBlock Text="le corps je dois continuer a faire" VerticalAlignment="Center" Margin="10"/>
-            </Border>
+            <uc:Header Grid.Row="0"></uc:Header>
 
-            <ContentControl x:Name="ContentArea" Grid.Row="0">
-                <uc:KPIs/>
-            </ContentControl>
+            <ContentControl x:Name="ContentArea" Grid.Row="1"></ContentControl>
 
-            <Border Grid.Row="2" Background="LightGray">
-                <TextBlock Text="footer je verrais si besoin" VerticalAlignment="Center" Margin="10"/>
-            </Border>
         </Grid>
     </Grid>
 </Window>

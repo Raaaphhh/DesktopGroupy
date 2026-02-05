@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.Views.ControlUser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DesktopGroupyV1.Views.ControlUser
+namespace DesktopGroupyV1.Views
 {
-    public partial class NavBar : UserControl
+    public partial class SecondWindow : Window
     {
-        public NavBar()
+        public SecondWindow()
         {
             InitializeComponent();
+            OpenUserControl();
+        }
+        private void OpenUserControl()
+        {
+            ContentArea.Content = new Dashboard();
         }
     }
 }

@@ -12,24 +12,24 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Margin="10" Background="#FF007ACC" CornerRadius="10">
+        <Border Grid.Column="0" Margin="10" Background="#FF007ACC" CornerRadius="10" Height="130">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Total Ventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Total Preventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding TotalPreventes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="1" Margin="10" Background="#FF28A745" CornerRadius="10">
+        <Border Grid.Column="1" Margin="10" Background="#FF28A745" CornerRadius="10" Height="130">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Ventes en cours" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding TotalPreventesExpediees}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Preventes en cours" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding TotalPreventesConfirmes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="2" Margin="10" Background="#FFFFC107" CornerRadius="10">
+        <Border Grid.Column="2" Margin="10" Background="#FFFFC107" CornerRadius="10" Height="130">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Ventes terminés" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding VenteTermine}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Préventes expédiées" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding TotalPreventesExpediees}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
     </Grid>

@@ -39,9 +39,9 @@ namespace DesktopGroupyV1.Views
             }
             else
             {
-                Dashboard dashboard = new Dashboard();
+                SecondWindow secondWindow = new SecondWindow();
                 this.Close();
-                dashboard.Show();
+                secondWindow.Show();
             }
         }
     }

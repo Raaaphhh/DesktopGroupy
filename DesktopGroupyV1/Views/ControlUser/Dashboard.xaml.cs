@@ -1,5 +1,4 @@
-﻿using DesktopGroupyV1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DesktopGroupyV1.Views
+namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class Dashboard : Window
+    public partial class Dashboard : UserControl
     {
         public Dashboard()
         {
             InitializeComponent();
-            var vendeurConnected = Data.Session.currentVendeurConnected;
         }
     }
 }

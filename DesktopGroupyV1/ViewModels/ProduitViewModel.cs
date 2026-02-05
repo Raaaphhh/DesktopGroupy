@@ -35,6 +35,17 @@ namespace DesktopGroupyV1.ViewModels
             }
         }
 
+        private int _totalPreventesConfirmes;
+        public int TotalPreventesConfirmes
+        {
+            get => _totalPreventesConfirmes;
+            set
+            {
+                _totalPreventesConfirmes = value;
+                OnPropertyChanged(nameof(TotalPreventesConfirmes));
+            }
+        }
+
         private int _totalPreventesExpediees;
         public int TotalPreventesExpediees
         {
@@ -50,7 +61,8 @@ namespace DesktopGroupyV1.ViewModels
         {
             var preventes = _db.Preventes.ToList();
             TotalPreventes = preventes.Count;
-            TotalPreventesExpediees = preventes.Count(p => p.Statut == "Expédié");
+            TotalPreventesConfirmes = preventes.Count(p => p.Statut == "confirmee");
+            TotalPreventesExpediees = preventes.Count; 
         }
     }
 }
