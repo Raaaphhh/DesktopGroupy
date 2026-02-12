@@ -15,7 +15,7 @@
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Colonne 1" Binding="{Binding Colonne1}" Width="*"/>
+                <DataGridTextColumn Header="Colonne 1" Binding="{Binding colonne1}" Width="*"/>
                 <DataGridTextColumn Header="Colonne 2" Binding="{Binding Colonne2}" Width="*"/>
                 <DataGridTextColumn Header="Colonne 3" Binding="{Binding Colonne3}" Width="*"/>
             </DataGrid.Columns>

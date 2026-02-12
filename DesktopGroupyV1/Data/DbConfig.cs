@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Text.RegularExpressions;
+using DotNetEnv; 
 
 namespace DesktopGroupyV1.Data
 {
@@ -24,11 +25,11 @@ namespace DesktopGroupyV1.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-
-                string server = "localhost";
-                string database = "groupy";
-                string user = "root";
-                string password = "mysql";
+                DotNetEnv.Env.Load("Env/.env");
+                string server = DotNetEnv.Env.GetString("DB_SERVER");
+                string database = DotNetEnv.Env.GetString("DB_DATABASE");
+                string user = DotNetEnv.Env.GetString("DB_USER");
+                string password = DotNetEnv.Env.GetString("DB_PASSWORD");
 
                 string connectionString = $"Server={server};Database={database};User={user};Password={password};";
 
