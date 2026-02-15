@@ -34,9 +34,9 @@
                                 BorderThickness="0" 
                                 Padding="5" 
                                 Cursor="Hand" 
-                                Style="{x:Null}">   
+                                Style="{x:Null}">
                             <Button.Resources>
-                                <Style TargetType="Button">
+                                <Style TargetType="{x:Type Button}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#FF4E4E52"/>
@@ -56,7 +56,7 @@
                                 Cursor="Hand" 
                                 Style="{x:Null}">
                             <Button.Resources>
-                                <Style TargetType="Button">
+                                <Style TargetType="{x:Type Button}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#FF4E4E52"/>
@@ -75,7 +75,7 @@
                                 Cursor="Hand" 
                                 Style="{x:Null}">
                             <Button.Resources>
-                                <Style TargetType="Button">
+                                <Style TargetType="{x:Type Button}">
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#FF4E4E52"/>
@@ -84,6 +84,27 @@
                                 </Style>
                             </Button.Resources>
                         </Button>
+                        <Button Content="Gestion"
+                                Background="#FF3A3A3F" 
+                                Foreground="White" 
+                                FontSize="14" 
+                                Margin="5" 
+                                Padding="5"
+                                BorderThickness="0" 
+                                Cursor="Hand" 
+                                Click="OpenGestionCE"
+                                Style="{x:Null}">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF4E4E52"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
                     </ListBox>
                 </StackPanel>
             </Border>

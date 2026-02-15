@@ -38,5 +38,11 @@ namespace DesktopGroupyV1.Views
             ContentArea.Visibility = Visibility.Visible;
             ContentArea.Content = new Dashboard();
         }
+
+        public void OpenGestionCE(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility = Visibility.Visible;
+            ContentArea.Content = new GestionCE();
+        }
     }
 }
