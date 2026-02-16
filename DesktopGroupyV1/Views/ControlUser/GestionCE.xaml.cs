@@ -12,17 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DesktopGroupyV1.ViewModels;
+using DesktopGroupyV1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    /// <summary>
-    /// Logique d'interaction pour GestionCE.xaml
-    /// </summary>
     public partial class GestionCE : UserControl
     {
+        GestionViewModel gvm;
         public GestionCE()
         {
             InitializeComponent();
+            gvm = new GestionViewModel();
+            DataContext = gvm;
+            gvm.GetPrevente();
         }
     }
 }

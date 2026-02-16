@@ -24,6 +24,18 @@ namespace DesktopGroupyV1.ViewModels
             Preventes = new ObservableCollection<Prevente>(GetPrevente());
         }
 
-    }
+        public List<Prevente> GetPrevente()
+        {
+            try
+            {
+                Preventes = new ObservableCollection<Prevente>(_context.Set<Prevente>().ToList());
+                return Preventes.ToList();
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"Error fetching Prevente data: {ex.Message}");
+                return new List<Prevente>();
 
+            }
+        }
+    }
 }
