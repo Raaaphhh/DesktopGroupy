@@ -5,16 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesktopGroupyV1.Views.ControlUser"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="900" Background="#F5F5F5">
+             d:DesignHeight="650" d:DesignWidth="900" Background="#F5F5F5" >
 
     <Grid Margin="30">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Titre -->
         <TextBlock Grid.Row="0" 
+                   Grid.ColumnSpan="2"
                    Text="Informations préventes" 
                    FontSize="24" 
                    FontWeight="SemiBold" 
@@ -23,6 +28,7 @@
 
         <!-- Conteneur DataGrid avec ombre -->
         <Border Grid.Row="1" 
+                Grid.Column="0"
                 Background="White" 
                 CornerRadius="8"
                 BorderBrush="#E0E0E0"
@@ -31,7 +37,7 @@
                 <DropShadowEffect BlurRadius="15" ShadowDepth="2" Opacity="0.1" Color="Black"/>
             </Border.Effect>
 
-            <DataGrid x:Name="ListePrevente" 
+            <DataGrid x:Name="ListePrevente"
                       ItemsSource="{Binding Preventes}" 
                       AutoGenerateColumns="False"
                       Background="Transparent"
@@ -84,7 +90,7 @@
                 </DataGrid.CellStyle>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Produit" Binding="{Binding Produits à mettre }" Width="*"/>
+                    <DataGridTextColumn Header="Produit" Binding="{Binding Produit.Nom}" Width="*"/>
                     <DataGridTextColumn Header="Quantité" Binding="{Binding Quantite}" Width="*"/>
                     <DataGridTextColumn Header="Statut" Binding="{Binding Statut}" Width="*"/>
                     <DataGridTextColumn Header="Date prévente" Binding="{Binding DatePrevente, StringFormat=dd/MM/yyyy}" Width="*"/>
@@ -92,5 +98,23 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
+
+        <!-- Zone des boutons à droite -->
+        <StackPanel Grid.Row="1" 
+                    Grid.Column="1" 
+                    Margin="15,0,0,0"
+                    VerticalAlignment="Top">
+
+            <!-- Exemple de boutons (à personnaliser) -->
+            <Button Content="Ajouter" 
+                    Height="40" 
+                    Margin="0,0,0,10"
+                    Background="DarkBlue"
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
+
+        </StackPanel>
     </Grid>
 </UserControl>

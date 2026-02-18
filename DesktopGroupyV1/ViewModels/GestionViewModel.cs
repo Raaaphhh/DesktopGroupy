@@ -10,12 +10,14 @@ using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using DesktopGroupyV1.Data;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace DesktopGroupyV1.ViewModels
 {
     internal class GestionViewModel
     {
-        public readonly DbContext _context;
+        public readonly GroupyContext _context; 
         public ObservableCollection<Prevente> Preventes { get; set; }
 
         public GestionViewModel()
@@ -28,7 +30,7 @@ namespace DesktopGroupyV1.ViewModels
         {
             try
             {
-                Preventes = new ObservableCollection<Prevente>(_context.Set<Prevente>().ToList());
+                Preventes = new ObservableCollection<Prevente>(_context.Preventes.Include(p => p.Produit).ToList());
                 return Preventes.ToList();
             }
             catch (Exception ex) {
@@ -36,6 +38,8 @@ namespace DesktopGroupyV1.ViewModels
                 return new List<Prevente>();
 
             }
+
+            
         }
     }
 }

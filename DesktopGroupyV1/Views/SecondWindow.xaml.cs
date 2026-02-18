@@ -1,4 +1,5 @@
-﻿using DesktopGroupyV1.Views.ControlUser;
+﻿using DesktopGroupyV1.Models;
+using DesktopGroupyV1.Views.ControlUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace DesktopGroupyV1.Views
         public void OpenStockView(object sender, RoutedEventArgs e)
         {
             ContentArea.Visibility = Visibility.Visible;
-            ContentArea.Content = new Stock();
+            ContentArea.Content = new ControlUser.Stock();
         }
 
         public void OpenDashboard(object sender, RoutedEventArgs e)
