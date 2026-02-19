@@ -24,14 +24,27 @@
         <!--A rajouter dans le comboBox-->
         <!--Et ajouter un inpout pour choisir le seuil pour le produit selectionné-->
 
-        <ComboBox x:Name="ListeProduits" 
-              ItemsSource="{Binding ProduitsVendeur}" 
-              DisplayMemberPath="Nom" 
-              Margin="10" 
-              Grid.Row="1" 
-              VerticalAlignment="Center" 
-              HorizontalAlignment="Stretch" 
-              Width="150"/>
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="1" VerticalAlignment="Center">
+            <ComboBox x:Name="ListeProduits" 
+                      ItemsSource="{Binding ProduitsVendeur}" 
+                      DisplayMemberPath="Nom" 
+                      VerticalAlignment="Center" 
+                      HorizontalAlignment="Left" 
+                      Width="150" />
+
+            <TextBox x:Name="SeuilInput" 
+                     Width="100" 
+                     Margin="10,0,0,0" 
+                     VerticalAlignment="Center" 
+                     HorizontalAlignment="Left" />  
+
+            <Button Content="Envoyer" 
+                    Width="100" 
+                    Margin="10,0,0,0" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Left" 
+                    Click="ModifierSeuil" />  
+        </StackPanel>
 
 
         <DataGrid x:Name="ListeProduitsStocks" 

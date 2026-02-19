@@ -1,4 +1,5 @@
-﻿using DesktopGroupyV1.ViewModels;
+﻿using DesktopGroupyV1.Models;
+using DesktopGroupyV1.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +27,31 @@ namespace DesktopGroupyV1.Views.ControlUser
             DataContext = vm;
         }
 
-        public void ModifierSeuil(object sender, RoutedEventArgs e)
+        // a DEV
+        public bool ModifierSeuil(object sender, RoutedEventArgs e)
         {
-            int IdProduit = 0;
-            int Seuil = 0;
-            vm.DefSeuilAlert(Seuil, IdProduit); 
+            var produitSelectionne = ListeProduits.SelectedItem as Produit;
+            var produitConvert = ConvertToProduit(produitSelectionne);
+
+            try
+            {
+                var seuilSelectionne = int.Parse(SeuilInput.Text);
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            vm.DefSeuilAlert(seuilSelectionne, produitConvert);
+            return true;
+        }
+
+        private Produit ConvertToProduit(Produit produitSelec)
+        {
+            return new Produit
+            {
+                IdProduit = produitSelec.IdProduit,
+            }; 
         }
     }
 }

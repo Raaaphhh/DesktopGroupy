@@ -48,11 +48,13 @@ namespace DesktopGroupyV1.ViewModels
         }
 
         // A Dev
-        public bool DefSeuilAlert(int seuil, int IdProduit)
+        public bool DefSeuilAlert(int seuil, Produit produitSelect)
         {
+            int IdProduitSelec = produitSelect.IdProduit; 
+
             var seuilProduitAUpdate = _db.Stocks
              .Include(s => s.Produit)
-             .FirstOrDefault(p => p.IdProduit == IdProduit);
+             .FirstOrDefault(p => p.IdProduit == IdProduitSelec);
 
             seuilProduitAUpdate.SeuilAlerte = seuil;
             _db.SaveChanges();
@@ -61,7 +63,7 @@ namespace DesktopGroupyV1.ViewModels
         }
 
         // A Dev
-        public string AlertRupture()
+        public string AlertRuptureStock()
         {
             var stocksVerification = _db.Stocks
                 .Include (s => s.Produit)
