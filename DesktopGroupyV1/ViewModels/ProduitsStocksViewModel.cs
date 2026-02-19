@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DesktopGroupyV1.Data;
 using DesktopGroupyV1.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using Org.BouncyCastle.Asn1.Mozilla;
 
@@ -15,14 +16,24 @@ namespace DesktopGroupyV1.ViewModels
     internal class ProduitsStocksViewModel
     {
         private readonly GroupyContext _db;
+        public ObservableCollection<Produit> Produits { get; set; }
+
+        int idVendeurCo = Session.currentVendeurConnected.Id;
+
         public ProduitsStocksViewModel()
         {
             _db = new GroupyContext();
+            Produits = new ObservableCollection<Produit>(getProduits());
         }
 
-        public ObservableCollection<Stock> Stocks { get; set; }
-        public ObservableCollection<Produit> Produits { get; set; }
+        public List<Produit> getProduits()
+        {
+            var produits =  _db.Produits
+                .Include(s => s.Stock)
+                .Where(v => v.IdVendeur ==  idVendeurCo)
+                .ToList();
 
-        // Suite a dev envoyer la liste des produits en stock et la liste des produits pour les afficher dans la vue
+            return produits.ToList();
+        }
     }
 }

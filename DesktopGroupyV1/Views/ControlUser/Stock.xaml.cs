@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,12 @@ namespace DesktopGroupyV1.Views.ControlUser
 {
     public partial class Stock : UserControl
     {
+        ProduitsStocksViewModel vm;
         public Stock()
         {
             InitializeComponent();
+            vm = new ProduitsStocksViewModel(); 
+            DataContext = vm;
         }
     }
 }

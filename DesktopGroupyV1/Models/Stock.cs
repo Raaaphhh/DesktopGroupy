@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DesktopGroupyV1.Models
 {
-    [Table("stock")]    
+    [Table("stocks")]    
     public class Stock
     {
         [Key]

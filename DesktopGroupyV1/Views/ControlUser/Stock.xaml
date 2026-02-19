@@ -20,16 +20,19 @@
                    Grid.Row="0" />
 
         <DataGrid x:Name="ListeProduitsStocks" 
-                  ItemsSource="{Binding ListeProduitsStocks}" 
+                  ItemsSource="{Binding }"
+                  AutoGenerateColumns="False"
                   Grid.Row="1">
             
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Référence" Binding="{Binding Reference}" Width="*"/>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="*"/>
-                <DataGridTextColumn Header="Statut" Binding="{Binding }" Width="*"/>
-                <DataGridTextColumn Header="Statut" Binding="{Binding }" Width="*"/>
-                <DataGridTextColumn Header="Statut" Binding="{Binding }" Width="*"/>
-                <DataGridTextColumn Header="Statut" Binding="{Binding }" Width="*"/>
+                <DataGridTextColumn Header="Prix initial" Binding="{Binding PrixInitial}" Width="*"/>
+                <DataGridTextColumn Header="Prix de groupe" Binding="{Binding PrixGroupe}" Width="*"/>
+
+                <DataGridTextColumn Header="Stock Total" 
+                                    Binding="{Binding Count}" 
+                                    Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
