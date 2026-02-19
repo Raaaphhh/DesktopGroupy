@@ -17,6 +17,7 @@ namespace DesktopGroupyV1.ViewModels
     {
         private readonly GroupyContext _db;
         public ObservableCollection<Stock> Stocks { get; set; }
+        public ObservableCollection<Produit> ProduitsVendeur { get; set; }
 
         int idVendeurCo = Session.currentVendeurConnected.Id;
 
@@ -24,6 +25,7 @@ namespace DesktopGroupyV1.ViewModels
         {
             _db = new GroupyContext();
             Stocks = new ObservableCollection<Stock>(GetStocksWithProducts());
+            ProduitsVendeur = new ObservableCollection<Produit>(GetProduitVendeurCo()); 
         }
 
         public List<Stock> GetStocksWithProducts()
@@ -34,6 +36,40 @@ namespace DesktopGroupyV1.ViewModels
                 .ToList();
 
             return stocks;
+        }
+
+        public List<Produit> GetProduitVendeurCo()
+        {
+            var produitsVendeurCo = _db.Produits
+                .Where(v => v.IdVendeur == idVendeurCo)
+                .ToList();
+
+            return produitsVendeurCo; 
+        }
+
+        // A Dev
+        public bool DefSeuilAlert(int seuil, int IdProduit)
+        {
+            var seuilProduitAUpdate = _db.Stocks
+             .Include(s => s.Produit)
+             .FirstOrDefault(p => p.IdProduit == IdProduit);
+
+            seuilProduitAUpdate.SeuilAlerte = seuil;
+            _db.SaveChanges();
+
+            return true; 
+        }
+
+        // A Dev
+        public string AlertRupture()
+        {
+            var stocksVerification = _db.Stocks
+                .Include (s => s.Produit)
+                .Where(s => s.Produit.IdVendeur == idVendeurCo)
+                .Where(s => s.StockPhysique <= s.SeuilAlerte)
+                .ToList();
+
+            return "a"; 
         }
     }
 }

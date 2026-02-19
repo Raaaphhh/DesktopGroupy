@@ -25,5 +25,12 @@ namespace DesktopGroupyV1.Views.ControlUser
             vm = new ProduitsStocksViewModel(); 
             DataContext = vm;
         }
+
+        public void ModifierSeuil(object sender, RoutedEventArgs e)
+        {
+            int IdProduit = 0;
+            int Seuil = 0;
+            vm.DefSeuilAlert(Seuil, IdProduit); 
+        }
     }
 }
