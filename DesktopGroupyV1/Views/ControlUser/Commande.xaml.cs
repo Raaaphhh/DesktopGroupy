@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,21 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DesktopGroupyV1.ViewModels;
-using DesktopGroupyV1.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class GestionCE : UserControl
+    public partial class Commande : UserControl
     {
-        GestionViewModel gvm;
-        public GestionCE()
+        CommandeViewModel _cvm;
+        public Commande()
         {
+            _cvm = new CommandeViewModel();
             InitializeComponent();
-            gvm = new GestionViewModel();
-            DataContext = gvm;
-            gvm.GetPrevente();
+            DataContext = _cvm;
+            _cvm.GetPrevente();
         }
     }
 }

@@ -91,7 +91,7 @@
                                 Padding="4"
                                 BorderThickness="0" 
                                 Cursor="Hand" 
-                                Click="OpenGestionCE"
+                                Click="OpenCommande"
                                 Style="{x:Null}">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Button}">
@@ -111,7 +111,7 @@
                                 Padding="4"
                                 BorderThickness="0" 
                                 Cursor="Hand" 
-                                Click="OpenGestionCE"
+                                Click="OpenHistorique"
                                 Style="{x:Null}">
                             <Button.Resources>
                                 <Style TargetType="{x:Type Button}">

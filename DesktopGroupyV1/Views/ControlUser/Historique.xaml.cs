@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace DesktopGroupyV1.Views.ControlUser
     /// </summary>
     public partial class Historique : UserControl
     {
+        HistoriqueViewModel _hvm;
         public Historique()
         {
             InitializeComponent();
+            _hvm = new HistoriqueViewModel();
+            DataContext = _hvm;
+            _hvm.GetHistorique();
         }
     }
 }

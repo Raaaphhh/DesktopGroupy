@@ -40,10 +40,16 @@ namespace DesktopGroupyV1.Views
             ContentArea.Content = new Dashboard();
         }
 
-        public void OpenGestionCE(object sender, RoutedEventArgs e)
+        public void OpenCommande(object sender, RoutedEventArgs e)
         {
             ContentArea.Visibility = Visibility.Visible;
-            ContentArea.Content = new GestionCE();
+            ContentArea.Content = new Commande();
+        }
+
+        public void OpenHistorique(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility = Visibility.Visible;
+            ContentArea.Content = new Historique();
         }
     }
 }

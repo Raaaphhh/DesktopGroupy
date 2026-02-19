@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DesktopGroupyV1.Models
 {
-    [Table("Expedition")]
+    [Table("Expeditions")]
     public class Expedition
     {
         [Key]
@@ -47,7 +47,7 @@ namespace DesktopGroupyV1.Models
 
         [Column("dimensions")]
         [MaxLength(50)]
-        public string Dimensions { get; set; }
+        public string? Dimensions { get; set; }
 
         [Column("date_creation")]
         public DateTime DateCreation { get; set; }

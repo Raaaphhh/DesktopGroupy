@@ -15,12 +15,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesktopGroupyV1.ViewModels
 {
-    internal class GestionViewModel
+    internal class CommandeViewModel
     {
         public readonly GroupyContext _context; 
         public ObservableCollection<Prevente> Preventes { get; set; }
 
-        public GestionViewModel()
+        public CommandeViewModel()
         {
             _context = new GroupyContext();
             Preventes = new ObservableCollection<Prevente>(GetPrevente());
@@ -30,7 +30,11 @@ namespace DesktopGroupyV1.ViewModels
         {
             try
             {
-                Preventes = new ObservableCollection<Prevente>(_context.Preventes.Include(p => p.Produit).ToList());
+                int vendeurConnected = Session.currentVendeurConnected.Id; 
+                Preventes = new ObservableCollection<Prevente>(_context.Preventes
+                                                        .Where(p => p.Produit.IdVendeur == vendeurConnected)
+                                                        .Include(p => p.Produit)
+                                                        .ToList());
                 return Preventes.ToList();
             }
             catch (Exception ex) {
@@ -43,3 +47,4 @@ namespace DesktopGroupyV1.ViewModels
         }
     }
 }
+ 

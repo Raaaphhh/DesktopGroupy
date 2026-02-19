@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DesktopGroupyV1.Views.ControlUser.GestionCE"
+﻿<UserControl x:Class="DesktopGroupyV1.Views.ControlUser.Commande"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -86,7 +86,7 @@
                                 <Setter Property="Foreground" Value="#1565C0"/>
                             </Trigger>
                         </Style.Triggers>
-                           </Style>
+                    </Style>
                 </DataGrid.CellStyle>
 
                 <DataGrid.Columns>
@@ -99,22 +99,5 @@
             </DataGrid>
         </Border>
 
-        <!-- Zone des boutons à droite -->
-        <StackPanel Grid.Row="1" 
-                    Grid.Column="1" 
-                    Margin="15,0,0,0"
-                    VerticalAlignment="Top">
-
-            <!-- Exemple de boutons (à personnaliser) -->
-            <Button Content="Ajouter" 
-                    Height="40" 
-                    Margin="0,0,0,10"
-                    Background="DarkBlue"
-                    Foreground="White"
-                    FontWeight="SemiBold"
-                    BorderThickness="0"
-                    Cursor="Hand"/>
-
-        </StackPanel>
     </Grid>
 </UserControl>
