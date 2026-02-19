@@ -110,6 +110,12 @@ namespace DesktopGroupyV1.Data
                 .HasIndex(s => s.IdProduit)
                 .IsUnique();
 
+            modelBuilder.Entity<Stock>()
+                .HasOne(s => s.Produit)
+                .WithMany(p => p.Stocks)
+                .HasForeignKey(s => s.IdProduit)
+                .OnDelete(DeleteBehavior.Cascade);
+
             // ================================================
             // MOUVEMENT STOCK
             // ================================================

@@ -53,6 +53,5 @@ namespace DesktopGroupyV1.Models
         // Relation de navigation
         [ForeignKey("IdProduit")]
         public virtual Produit Produit { get; set; }
-
     }
 }

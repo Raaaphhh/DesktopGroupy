@@ -66,7 +66,6 @@ namespace DesktopGroupyV1.Models
         [ForeignKey("IdCategorie")]
         public virtual Categorie Categorie { get; set; }
 
-        //[ForeignKey("IdStock")]
-        //public virtual Stock Stock { get; set; }
+        public ICollection<Stock> Stocks { get; set; }
     }
 }

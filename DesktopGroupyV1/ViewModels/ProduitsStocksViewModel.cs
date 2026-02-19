@@ -16,24 +16,24 @@ namespace DesktopGroupyV1.ViewModels
     internal class ProduitsStocksViewModel
     {
         private readonly GroupyContext _db;
-        public ObservableCollection<Produit> Produits { get; set; }
+        public ObservableCollection<Stock> Stocks { get; set; }
 
         int idVendeurCo = Session.currentVendeurConnected.Id;
 
         public ProduitsStocksViewModel()
         {
             _db = new GroupyContext();
-            Produits = new ObservableCollection<Produit>(getProduits());
+            Stocks = new ObservableCollection<Stock>(GetStocksWithProducts());
         }
 
-        public List<Produit> getProduits()
+        public List<Stock> GetStocksWithProducts()
         {
-            var produits =  _db.Produits
-                .Include(s => s.Stock)
-                .Where(v => v.IdVendeur ==  idVendeurCo)
+            var stocks = _db.Stocks
+                .Include(s => s.Produit) 
+                .Where(s => s.Produit.IdVendeur == idVendeurCo) 
                 .ToList();
 
-            return produits.ToList();
+            return stocks;
         }
     }
 }

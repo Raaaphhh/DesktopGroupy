@@ -20,19 +20,20 @@
                    Grid.Row="0" />
 
         <DataGrid x:Name="ListeProduitsStocks" 
-                  ItemsSource="{Binding }"
+                  ItemsSource="{Binding Stocks}"
                   AutoGenerateColumns="False"
                   Grid.Row="1">
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Référence" Binding="{Binding Reference}" Width="*"/>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" Width="*"/>
-                <DataGridTextColumn Header="Prix initial" Binding="{Binding PrixInitial}" Width="*"/>
-                <DataGridTextColumn Header="Prix de groupe" Binding="{Binding PrixGroupe}" Width="*"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Produit.Nom}" Width="*"/>
+                <DataGridTextColumn Header="Prix initial" Binding="{Binding Produit.PrixInitial}" Width="*"/>
+                <DataGridTextColumn Header="Prix Groupé" Binding="{Binding Produit.PrixGroupe}" Width="*"/>
+                <DataGridTextColumn Header="Nbr Min Acheteurs" Binding="{Binding Produit.NombreMinAcheteurs}" Width="*"/>
+                <DataGridTextColumn Header="Date Limite" Binding="{Binding Produit.DateLimite}" Width="*"/>
 
-                <DataGridTextColumn Header="Stock Total" 
-                                    Binding="{Binding Count}" 
-                                    Width="*"/>
+                <DataGridTextColumn Header="Stock Physique" Binding="{Binding StockPhysique}" Width="*"/>
+                <DataGridTextColumn Header="Stock Reserve" Binding="{Binding StockReserve}" Width="*"/>
+                <DataGridTextColumn Header="Seuil Alerte" Binding="{Binding SeuilAlerte}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
