@@ -71,5 +71,11 @@ namespace DesktopGroupyV1.Views.ControlUser
                 };
             }
         }
+
+        // a finir pour recharger le tableau
+        public void RechargerDatatable(object sender, RoutedEventArgs e)
+        {
+            vm.GetProduitVendeurCo(); 
+        }
     }
 }
