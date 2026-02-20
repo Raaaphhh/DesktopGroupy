@@ -27,31 +27,49 @@ namespace DesktopGroupyV1.Views.ControlUser
             DataContext = vm;
         }
 
-        // a DEV
-        public bool ModifierSeuil(object sender, RoutedEventArgs e)
+        public void ModifierSeuil(object sender, RoutedEventArgs e)
         {
             var produitSelectionne = ListeProduits.SelectedItem as Produit;
             var produitConvert = ConvertToProduit(produitSelectionne);
+            if (produitConvert == null)
+            {
+                MessageBox.Show("Veuillez saisir un produit ou un produit valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
+            string seuilSelectionne = SeuilInput.Text;
             try
             {
-                var seuilSelectionne = int.Parse(SeuilInput.Text);
+                var seuilSelectionneConvert = int.Parse(seuilSelectionne);
+                if (seuilSelectionneConvert.GetType() == typeof(int) && vm.DefSeuilAlert(seuilSelectionneConvert, produitConvert) == true)
+                {
+                    MessageBox.Show("Votre seuil : " + seuilSelectionneConvert + "a été modifier pour le produit : " + produitConvert.Nom, "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Une erreur est survenue dans l'enregistrement des données ou dans la saisie a eu lieu", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
-                return false;
+                MessageBox.Show("Erreur", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            vm.DefSeuilAlert(seuilSelectionne, produitConvert);
-            return true;
         }
 
         private Produit ConvertToProduit(Produit produitSelec)
         {
-            return new Produit
+            if(produitSelec == null)
             {
-                IdProduit = produitSelec.IdProduit,
-            }; 
+                return produitSelec;
+            }
+            else
+            {
+                return new Produit
+                {
+                    IdProduit = produitSelec.IdProduit,
+                    Nom = produitSelec.Nom
+                };
+            }
         }
     }
 }
