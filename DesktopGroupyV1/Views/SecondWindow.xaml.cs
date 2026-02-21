@@ -51,5 +51,11 @@ namespace DesktopGroupyV1.Views
             ContentArea.Visibility = Visibility.Visible;
             ContentArea.Content = new Historique();
         }
+
+        public void OpenExpedition(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility= Visibility.Visible;
+            ContentArea.Content = new Expeditions();
+        }
     }
 }

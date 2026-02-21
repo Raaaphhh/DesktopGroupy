@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using DesktopGroupyV1.Data;
+using DesktopGroupyV1.ViewModels;
+using DesktopGroupyV1.Views;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
@@ -20,9 +24,13 @@ namespace DesktopGroupyV1.Views.ControlUser
     /// </summary>
     public partial class Expeditions : UserControl
     {
+        ExpeditionViewModel _evm;
         public Expeditions()
         {
+            _evm = new ExpeditionViewModel();
             InitializeComponent();
+            DataContext = _evm;
+            _evm.GetExpeditions();
         }
     }
 }

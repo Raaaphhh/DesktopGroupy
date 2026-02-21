@@ -29,8 +29,16 @@ namespace DesktopGroupyV1.ViewModels
             {
                 int vendeurConnected = Session.currentVendeurConnected.Id;
                 Expeditions = new ObservableCollection<Expedition>(_context.Expeditions
-                    .)
+                    .Include(e => e.NoteInterne)
+                    .ThenInclude(n => n.Vendeur)
+                    .Where(e => e.NoteInterne.IdVendeur == vendeurConnected)
+                    .ToList());
 
+                return Expeditions.ToList();
+            }
+            catch (Exception ex)
+            {
+                return new List<Expedition>();
             }
         }
     }
