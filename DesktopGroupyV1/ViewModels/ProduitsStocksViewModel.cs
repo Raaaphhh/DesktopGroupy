@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Effects;
 using DesktopGroupyV1.Data;
 using DesktopGroupyV1.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace DesktopGroupyV1.ViewModels
         private readonly GroupyContext _db;
         public ObservableCollection<Stock> Stocks { get; set; }
         public ObservableCollection<Produit> ProduitsVendeur { get; set; }
+        public ObservableCollection<string> Alertes {  get; set; }
 
         int idVendeurCo = Session.currentVendeurConnected.Id;
 
@@ -25,7 +27,8 @@ namespace DesktopGroupyV1.ViewModels
         {
             _db = new GroupyContext();
             Stocks = new ObservableCollection<Stock>(GetStocksWithProducts());
-            ProduitsVendeur = new ObservableCollection<Produit>(GetProduitVendeurCo()); 
+            ProduitsVendeur = new ObservableCollection<Produit>(GetProduitVendeurCo());
+            Alertes = new ObservableCollection<string>(AlertRuptureStock());
         }
 
         public List<Stock> GetStocksWithProducts()
@@ -47,7 +50,7 @@ namespace DesktopGroupyV1.ViewModels
             return produitsVendeurCo; 
         }
 
-        // A Dev
+        // A finir de Dev
         public bool DefSeuilAlert(int seuil, Produit produitSelect)
         {
             int IdProduitSelec = produitSelect.IdProduit; 
@@ -62,16 +65,27 @@ namespace DesktopGroupyV1.ViewModels
             return true; 
         }
 
-        // A Dev
-        public string AlertRuptureStock()
+        // A finir de Dev
+        public ObservableCollection<string> AlertRuptureStock()
         {
+            ObservableCollection<string> listAlertes = new ObservableCollection<string>(); 
             var stocksVerification = _db.Stocks
                 .Include (s => s.Produit)
                 .Where(s => s.Produit.IdVendeur == idVendeurCo)
                 .Where(s => s.StockPhysique <= s.SeuilAlerte)
                 .ToList();
 
-            return "a"; 
+            foreach (var stock in stocksVerification)
+            {
+                if (stock.StockDisponible <= stock.SeuilAlerte)
+                {
+                    string message = stock.Produit.Nom + " est en alerte seuil, avec un stock disponible de : " + stock.StockDisponible;
+                    listAlertes.Add(message);
+                    Console.WriteLine(message);
+                }
+            }
+
+            return listAlertes; 
         }
     }
 }

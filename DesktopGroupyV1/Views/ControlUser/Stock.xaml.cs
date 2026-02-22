@@ -43,15 +43,20 @@ namespace DesktopGroupyV1.Views.ControlUser
                 var seuilSelectionneConvert = int.Parse(seuilSelectionne);
                 if (seuilSelectionneConvert.GetType() == typeof(int) && vm.DefSeuilAlert(seuilSelectionneConvert, produitConvert) == true)
                 {
+                    SeuilInput.Text = string.Empty;
+                    vm = new ProduitsStocksViewModel();
+                    DataContext = vm;
                     MessageBox.Show("Votre seuil : " + seuilSelectionneConvert + "a été modifier pour le produit : " + produitConvert.Nom, "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
+                    SeuilInput.Text = string.Empty;
                     MessageBox.Show("Une erreur est survenue dans l'enregistrement des données ou dans la saisie a eu lieu", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
+                SeuilInput.Text = string.Empty;
                 MessageBox.Show("Erreur", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -72,10 +77,10 @@ namespace DesktopGroupyV1.Views.ControlUser
             }
         }
 
-        // a finir pour recharger le tableau
         public void RechargerDatatable(object sender, RoutedEventArgs e)
         {
-            vm.GetProduitVendeurCo(); 
+            vm = new ProduitsStocksViewModel();
+            DataContext = vm; 
         }
     }
 }

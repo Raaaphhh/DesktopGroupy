@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="70"/>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>  
 
@@ -47,17 +48,32 @@
                     Click="ModifierSeuil" />  
         </StackPanel>
 
-        <Button Content="Recharger Tableau" 
+        <Button Content="Recharger Tableau"
+                Click="RechargerDatatable"
                 Width="100" 
                 Margin="0,0,10,0" 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Right" 
                 Grid.Row="1" />
 
+        <ListBox x:Name="AlertMessages"
+                 ItemsSource="{Binding Alertes}"
+                 Margin="10"
+                 Grid.Row="2"
+                 Background="LightYellow"
+                 BorderBrush="Gray"
+                 BorderThickness="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" Foreground="Red" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
         <DataGrid x:Name="ListeProduitsStocks" 
                   ItemsSource="{Binding Stocks}"
                   AutoGenerateColumns="False"
-                  Grid.Row="2">
+                  Grid.Row="3">
             
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nom" Binding="{Binding Produit.Nom}" Width="*"/>
