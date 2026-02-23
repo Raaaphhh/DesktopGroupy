@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,6 @@ namespace DesktopGroupyV1.ViewModels
             return produitsVendeurCo; 
         }
 
-        // A finir de Dev
         public bool DefSeuilAlert(int seuil, Produit produitSelect)
         {
             int IdProduitSelec = produitSelect.IdProduit; 
@@ -60,12 +60,17 @@ namespace DesktopGroupyV1.ViewModels
              .FirstOrDefault(p => p.IdProduit == IdProduitSelec);
 
             seuilProduitAUpdate.SeuilAlerte = seuil;
-            _db.SaveChanges();
+            try
+            {
+                _db.SaveChanges();
+            }catch (Exception ex)
+            {
+                var errorSaveChanges = ex.ToString();
+            }
 
             return true; 
         }
 
-        // A finir de Dev
         public ObservableCollection<string> AlertRuptureStock()
         {
             ObservableCollection<string> listAlertes = new ObservableCollection<string>(); 
@@ -79,7 +84,7 @@ namespace DesktopGroupyV1.ViewModels
             {
                 if (stock.StockDisponible <= stock.SeuilAlerte)
                 {
-                    string message = stock.Produit.Nom + " est en alerte seuil, avec un stock disponible de : " + stock.StockDisponible;
+                    string message = stock.Produit.Nom + " est en alerte seuil, avec un stock disponible (stock physique - stock reservé) de : " + stock.StockDisponible;
                     listAlertes.Add(message);
                     Console.WriteLine(message);
                 }

@@ -31,9 +31,10 @@ namespace DesktopGroupyV1.Views.ControlUser
         {
             var produitSelectionne = ListeProduits.SelectedItem as Produit;
             var produitConvert = ConvertToProduit(produitSelectionne);
+
             if (produitConvert == null)
             {
-                MessageBox.Show("Veuillez saisir un produit ou un produit valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Veuillez saisir un produit ou seuil valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -44,20 +45,23 @@ namespace DesktopGroupyV1.Views.ControlUser
                 if (seuilSelectionneConvert.GetType() == typeof(int) && vm.DefSeuilAlert(seuilSelectionneConvert, produitConvert) == true)
                 {
                     SeuilInput.Text = string.Empty;
+                    ListeProduits.SelectedItem = string.Empty;
                     vm = new ProduitsStocksViewModel();
                     DataContext = vm;
-                    MessageBox.Show("Votre seuil : " + seuilSelectionneConvert + "a été modifier pour le produit : " + produitConvert.Nom, "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Votre seuil : " + seuilSelectionneConvert + "a été modifier pour le produit : " + produitConvert.Nom+".", "Validation", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
                     SeuilInput.Text = string.Empty;
-                    MessageBox.Show("Une erreur est survenue dans l'enregistrement des données ou dans la saisie a eu lieu", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ListeProduits.SelectedItem = string.Empty;
+                    MessageBox.Show("Une erreur est survenue dans l'enregistrement des données ou dans la saisie a eu lieu.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
                 SeuilInput.Text = string.Empty;
-                MessageBox.Show("Erreur", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                ListeProduits.SelectedItem = string.Empty;
+                MessageBox.Show("Erreur : le seuil n'es pas dans un format valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
