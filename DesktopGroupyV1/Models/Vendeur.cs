@@ -57,5 +57,6 @@ namespace DesktopGroupyV1.Models
         [Column("date_modification")]
         public DateTime? DateModification { get; set; }
 
+
     }
 }
