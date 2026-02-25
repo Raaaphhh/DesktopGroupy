@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DesktopGroupyV1.Models
 {
-    [Table("Expedition")]
+    [Table("Expeditions")]
     public class Expedition
     {
         [Key]
@@ -47,13 +47,19 @@ namespace DesktopGroupyV1.Models
 
         [Column("dimensions")]
         [MaxLength(50)]
-        public string Dimensions { get; set; }
+        public string? Dimensions { get; set; }
 
         [Column("date_creation")]
         public DateTime DateCreation { get; set; }
 
+        [Column("idnotes")]
+        public int? IdNotes { get; set; }
+
         // Relation de navigation
         [ForeignKey("IdPrevente")]
         public virtual Prevente Prevente { get; set; }
+
+        [ForeignKey("IdNotes")]
+        public virtual NoteInterne? NoteInterne { get; set; }
     }
 }

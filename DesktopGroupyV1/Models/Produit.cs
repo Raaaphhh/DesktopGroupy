@@ -51,7 +51,7 @@ namespace DesktopGroupyV1.Models
 
         [Column("image_url")]
         [MaxLength(255)]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         [Column("date_creation")]
         public DateTime DateCreation { get; set; }
