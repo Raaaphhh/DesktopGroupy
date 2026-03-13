@@ -42,8 +42,6 @@ namespace DesktopGroupyV1.ViewModels
                 return new List<Prevente>();
 
             }
-
-            
         }
     }
 }

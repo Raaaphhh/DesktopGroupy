@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,22 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.EntityFrameworkCore;
-using DesktopGroupyV1.Data;
-using DesktopGroupyV1.ViewModels;
-using DesktopGroupyV1.Views;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    public partial class Expeditions : UserControl
+    public partial class MessageClient : UserControl
     {
-        ExpeditionViewModel _evm;
-        public Expeditions()
+        MessageClientViewModel _vm;
+        public MessageClient()
         {
-            _evm = new ExpeditionViewModel();
+            _vm = new MessageClientViewModel();
             InitializeComponent();
-            DataContext = _evm;
-            _evm.GetExpeditions();
+            DataContext = _vm; 
         }
     }
 }

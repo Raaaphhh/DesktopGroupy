@@ -12,9 +12,6 @@ using System.Security.RightsManagement;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.ObjectModel;
 
-
-
-
 namespace DesktopGroupyV1.ViewModels
 {
     internal class HistoriqueViewModel
