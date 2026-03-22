@@ -141,8 +141,26 @@
                                 </Style>
                             </Button.Resources>
                         </Button>
-
-
+                        <Button Content="Singalement"
+                            Background="#FFFF6666" 
+                            Foreground="White" 
+                            FontSize="14" 
+                            Margin="5" 
+                            Padding="4"
+                            BorderThickness="0" 
+                            Cursor="Hand" 
+                            Click="OpenSignalementProduit"
+                            Style="{x:Null}">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FF4E4E52"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
 
                     </ListBox>
                 </StackPanel>

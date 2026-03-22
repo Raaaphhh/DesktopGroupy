@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DesktopGroupyV1.Models
 {
-    [Table("signalement")]
+    [Table("signalements")]
     public class Signalement
     {
         [Key]
