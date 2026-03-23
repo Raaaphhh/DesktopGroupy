@@ -19,7 +19,7 @@ namespace DesktopGroupyV1.Data
         public DbSet<Expedition> Expeditions { get; set; }
         public DbSet<NoteInterne> NotesInternes { get; set; }
         public DbSet<Facture> Factures { get; set; }
-        public DbSet<Signalement> Signalements { get; set; }
+        public DbSet<Signalements> Signalements { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -210,20 +210,20 @@ namespace DesktopGroupyV1.Data
             // SIGNALEMENT
             // ================================================
 
-            modelBuilder.Entity<Signalement>()
+            modelBuilder.Entity<Signalements>()
                 .HasOne(s => s.Produit)
                 .WithMany()
                 .HasForeignKey(s => s.IdProduit)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Signalement>()
+            modelBuilder.Entity<Signalements>()
                 .HasOne(s => s.Client)
                 .WithMany()
                 .HasForeignKey(s => s.IdClient)
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Un client ne peut signaler qu'une fois le même produit
-            modelBuilder.Entity<Signalement>()
+            modelBuilder.Entity<Signalements>()
                 .HasIndex(s => new { s.IdProduit, s.IdClient })
                 .IsUnique();
 

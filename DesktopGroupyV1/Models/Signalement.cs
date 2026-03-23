@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace DesktopGroupyV1.Models
 {
-    [Table("signalement")]
-    public class Signalement
+    [Table("signalements")]
+    public class Signalements
     {
         [Key]
         [Column("id")]
