@@ -8,8 +8,6 @@ using DesktopGroupyV1.Data;
 using DesktopGroupyV1.Models;
 using System.Collections.ObjectModel;
 
-
-
 namespace DesktopGroupyV1.ViewModels
 {
     internal class ExpeditionViewModel

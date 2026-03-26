@@ -19,9 +19,6 @@ using DesktopGroupyV1.Views;
 
 namespace DesktopGroupyV1.Views.ControlUser
 {
-    /// <summary>
-    /// Logique d'interaction pour Expeditions.xaml
-    /// </summary>
     public partial class Expeditions : UserControl
     {
         ExpeditionViewModel _evm;

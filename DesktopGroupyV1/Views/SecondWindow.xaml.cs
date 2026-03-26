@@ -57,5 +57,17 @@ namespace DesktopGroupyV1.Views
             ContentArea.Visibility= Visibility.Visible;
             ContentArea.Content = new Expeditions();
         }
+
+        public void OpenMessageClient(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility= Visibility.Visible;
+            ContentArea.Content = new MessageClient(); 
+        }
+
+        public void OpenSignalementProduit(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Visibility = Visibility.Visible;
+            ContentArea.Content = new SignalementProduit();
+        }
     }
 }
