@@ -17,7 +17,7 @@ namespace DesktopGroupyV1.ViewModels
         private readonly GroupyContext _context;
         public ObservableCollection<Expedition> Expeditions { get; set; }
 
-    public ExpeditionViewModel()
+        public ExpeditionViewModel()
         {
             _context = new GroupyContext();
             Expeditions = new ObservableCollection<Expedition>(GetExpeditions());
@@ -27,17 +27,23 @@ namespace DesktopGroupyV1.ViewModels
         {
             try
             {
+                var statut = new[] { "en_transit", "en_preparation"};
                 int vendeurConnected = Session.currentVendeurConnected.Id;
-                Expeditions = new ObservableCollection<Expedition>(_context.Expeditions
-                    .Include(e => e.NoteInterne)
-                    .ThenInclude(n => n.Vendeur)
-                    .Where(e => e.NoteInterne.IdVendeur == vendeurConnected)
-                    .ToList());
 
-                return Expeditions.ToList();
+                var expeditions = _context.Expeditions
+                    .Where(e => e.IdNotes != null)
+                    .Include(e => e.NoteInterne)
+                    .Where(e => e.NoteInterne.IdVendeur == vendeurConnected && statut.Contains(e.Statut))
+                    .AsNoTracking()
+                    .ToList();
+
+                Expeditions = new ObservableCollection<Expedition>(expeditions);
+                return expeditions;
             }
             catch (Exception ex)
             {
+                // Logger l'erreur pour diagnostiquer
+                System.Diagnostics.Debug.WriteLine($"Erreur GetExpeditions: {ex.Message}");
                 return new List<Expedition>();
             }
         }
