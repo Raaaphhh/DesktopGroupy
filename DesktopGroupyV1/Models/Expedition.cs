@@ -53,7 +53,7 @@ namespace DesktopGroupyV1.Models
         public DateTime DateCreation { get; set; }
 
         [Column("idnotes")]
-        public int? IdNotes { get; set; }
+        public int IdNotes { get; set; }
 
         // Relation de navigation
         [ForeignKey("IdPrevente")]

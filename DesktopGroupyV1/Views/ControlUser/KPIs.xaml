@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:oxy="http://oxyplot.org/wpf"
              mc:Ignorable="d"
-             Height="150" Width="800">
+             Height="480" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -14,23 +19,28 @@
 
         <Border Grid.Column="0" Margin="10" Background="#FF007ACC" CornerRadius="10" Height="130">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Total Preventes" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding TotalPreventes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Chiffre d'affaire" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding ChiffreAffaire}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
         <Border Grid.Column="1" Margin="10" Background="#FF28A745" CornerRadius="10" Height="130">
+
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="Preventes en cours" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding TotalPreventesConfirmes}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="2" Margin="10" Background="#FFFFC107" CornerRadius="10" Height="130">
+        <Border Grid.Column="2" Margin="10" Background="red" CornerRadius="10" Height="130">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Préventes expédiées" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBlock Text="{Binding TotalPreventesExpediees}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="Sigalement reçu" FontSize="16" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding SignalCount}" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
+        
+        <oxy:PlotView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                      Model="{Binding SalesPlotModel}"
+                      Margin="10"/>
     </Grid>
 </UserControl>
