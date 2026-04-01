@@ -25,7 +25,14 @@ namespace DesktopGroupyV1.Views.ControlUser
             _cvm = new CommandeViewModel();
             InitializeComponent();
             DataContext = _cvm;
-            _cvm.GetPrevente();
+           // _cvm.GetPrevente();
+        }
+
+        private void AddFilter(object sender, RoutedEventArgs e)
+        {
+            string filtre = "Name.Text";
+            //_cvm.GetPrevente(filtre); 
+            _cvm = new CommandeViewModel(filtre);
         }
     }
 }

@@ -93,6 +93,8 @@
                     <DataGridTextColumn Header="Statut" Binding="{Binding Statut}" Width="*"/>
                     <DataGridTextColumn Header="Contenu" Binding="{Binding NoteInterne.Contenu}" Width="*"/>
                     <DataGridTextColumn Header="Note" Binding="{Binding NoteInterne.TypeNote}" Width="*"/>
+                    <DataGridTextColumn Header="Date livraison prévue" Binding="{Binding DateLivraisonPrevue, StringFormat=dd/MM/yyyy}" Width="*"/>
+
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

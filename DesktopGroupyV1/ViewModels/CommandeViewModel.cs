@@ -20,27 +20,30 @@ namespace DesktopGroupyV1.ViewModels
         public readonly GroupyContext _context; 
         public ObservableCollection<Prevente> Preventes { get; set; }
 
-        public CommandeViewModel()
+        public CommandeViewModel(string test = null)
         {
             _context = new GroupyContext();
-            Preventes = new ObservableCollection<Prevente>(GetPrevente());
+            Preventes = new ObservableCollection<Prevente>(GetPrevente(test));
         }
 
-        public List<Prevente> GetPrevente()
+        public List<Prevente> GetPrevente(string filtre = null)
         {
             try
             {
-                int vendeurConnected = Session.currentVendeurConnected.Id; 
+                int vendeurConnected = Session.currentVendeurConnected.Id;
                 Preventes = new ObservableCollection<Prevente>(_context.Preventes
-                                                        .Where(p => p.Produit.IdVendeur == vendeurConnected)
-                                                        .Include(p => p.Produit)
+                                                         .Include(prv => prv.Produit)
+                                                         .ThenInclude(prv => prv.Vendeur)
+                                                         .Include(v => v.NoteInterne)
+                                                         .ThenInclude(v => v.Expeditions)
+                                                         .Where(prev => prev.Produit.IdVendeur == vendeurConnected)
                                                         .ToList());
+
                 return Preventes.ToList();
             }
             catch (Exception ex) {
                 Console.WriteLine($"Error fetching Prevente data: {ex.Message}");
                 return new List<Prevente>();
-
             }
         }
     }

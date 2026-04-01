@@ -39,5 +39,7 @@ namespace DesktopGroupyV1.Models
         [ForeignKey("IdVendeur")]
         public virtual Vendeur Vendeur { get; set; }
 
+        public virtual ICollection<Expedition> Expeditions { get; set; }
+
     }
 }
