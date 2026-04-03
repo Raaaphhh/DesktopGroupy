@@ -24,7 +24,7 @@ namespace DesktopGroupyV1.Models
 
         [Column("transporteur")]
         [MaxLength(100)]
-        public string Transporteur { get; set; }
+        public string Transporteur { get; set;  }
 
         [Column("statut")]
         [MaxLength(50)]

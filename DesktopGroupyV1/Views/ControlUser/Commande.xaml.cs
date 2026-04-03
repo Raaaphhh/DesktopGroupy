@@ -22,17 +22,17 @@ namespace DesktopGroupyV1.Views.ControlUser
         CommandeViewModel _cvm;
         public Commande()
         {
-            _cvm = new CommandeViewModel();
             InitializeComponent();
+            _cvm = new CommandeViewModel(null);
             DataContext = _cvm;
-           // _cvm.GetPrevente();
         }
 
         private void AddFilter(object sender, RoutedEventArgs e)
         {
-            string filtre = "Name.Text";
-            //_cvm.GetPrevente(filtre); 
+            string filtre = FiltreExpedition.Text;
+            DataContext = _cvm;
             _cvm = new CommandeViewModel(filtre);
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopGroupyV1.Views.ControlUser;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -39,7 +40,12 @@ namespace DesktopGroupyV1.Models
         [ForeignKey("IdVendeur")]
         public virtual Vendeur Vendeur { get; set; }
 
-        public virtual ICollection<Expedition> Expeditions { get; set; }
+        //public Expedition Expedition { get; set; }
+        public ICollection<Expedition> Expeditions { get; set; }
+
+
+        public string StatutExpedition => Expeditions?.FirstOrDefault()?.Statut ?? "";
+        //  public Expedition Expedition { get; set; }
 
     }
 }
