@@ -25,15 +25,15 @@ namespace DesktopGroupyV1.ViewModels
        // public List<Expedition> StatutExp { get; set; }
 
 
-        public CommandeViewModel(string? filtre = null)
+        public CommandeViewModel(string? filtre = null, string? filtreNote = null)
         {
             _context = new GroupyContext();
-            Preventes = new ObservableCollection<Prevente>(GetPrevente(filtre));
+            Preventes = new ObservableCollection<Prevente>(GetPrevente(filtre, filtreNote));
         }
 
-        public List<Prevente> GetPrevente(string filtre)
+        public List<Prevente> GetPrevente(string? filtre = null, string? filtreNote = null)
         {
-            if (filtre != "Tous" && filtre != null)
+            if (filtre != null && filtreNote == null)
             {
                 int vendeurConnected = Session.currentVendeurConnected.Id;
                 Preventes = new ObservableCollection<Prevente>(_context.Preventes
@@ -45,20 +45,19 @@ namespace DesktopGroupyV1.ViewModels
                                                          .ToList());
                 return Preventes.ToList();
             }
-            //else if (filtre == "livre")
-            //{
-            //    int vendeurConnected = Session.currentVendeurConnected.Id;
-            //    Preventes = new ObservableCollection<Prevente>(_context.Preventes
-            //                                             .Include(prv => prv.Produit)
-            //                                             .ThenInclude(prv => prv.Vendeur)
-            //                                             .Include(v => v.NoteInterne)
-            //                                             .ThenInclude(v => v.Expeditions)                                                         
-            //                                             .Where(prev => prev.Produit.IdVendeur == vendeurConnected && prev.NoteInterne.Expeditions.Any(e => e.Statut == "livre"))
-            //                                             .ToList());
-            //    return Preventes.ToList();
-            //}
-
-            else if (filtre == null || filtre == "Tous")
+            else if ( filtre == null && filtreNote != null)
+            {
+                int vendeurConnected = Session.currentVendeurConnected.Id;
+                Preventes = new ObservableCollection<Prevente>(_context.Preventes
+                                                         .Include(prv => prv.Produit)
+                                                         .ThenInclude(prv => prv.Vendeur)
+                                                         .Include(v => v.NoteInterne)
+                                                         .ThenInclude(v => v.Expeditions)
+                                                         .Where(prev => prev.Produit.IdVendeur == vendeurConnected && prev.NoteInterne.Expeditions.Any(e => e.NoteInterne.TypeNote == filtreNote))
+                                                         .ToList());
+                return Preventes.ToList();
+            }
+            else if (filtre == null )
             {
                 try
                 {

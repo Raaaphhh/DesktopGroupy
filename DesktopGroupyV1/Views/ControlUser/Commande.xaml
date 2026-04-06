@@ -114,23 +114,24 @@
             </Border.Effect>
 
             <StackPanel>
-                <TextBlock Text="Filtre Statut Expédition" 
+                <TextBlock Text="Filtre Expédition" 
                            FontSize="14" 
                            FontWeight="SemiBold" 
                            Foreground="#2D2D2D"
-                           Margin="0,0,0,15"/>
+                           Margin="0,0,0,7"/>
 
                 <ComboBox x:Name="FiltreExpedition"
                           SelectedIndex="0"
                           Height="35"
                           FontSize="13"
                           Margin="0,0,0,15">
-                    <ComboBoxItem Content="Tous"/>
-                    <ComboBoxItem Content="en_preparation"/>
-                    <ComboBoxItem Content="en_transit"/>
-                    <ComboBoxItem Content="expedie"/>
-                    <ComboBoxItem Content="livre"/>
+                    <ComboBoxItem Content="Tous" />
+                    <ComboBoxItem Content="en_preparation" />
+                    <ComboBoxItem Content="en_transit" />
+                    <ComboBoxItem Content="expedie" />
+                    <ComboBoxItem Content="livre" />
                 </ComboBox>
+               
 
                 <Button x:Name="Appliquer"
                         Content="Appliquer"
@@ -142,6 +143,35 @@
                         BorderThickness="0"
                         Click="AddFilter"
                         Cursor="Hand"/>
+
+                <TextBlock Text="Filtre Note" 
+                           FontSize="14" 
+                           FontWeight="SemiBold" 
+                           Foreground="#2D2D2D"
+                           Margin="0,15,0,7"/>
+
+                <ComboBox x:Name="FiltreNote"
+                          SelectedIndex="0"
+                          Height="35"
+                          FontSize="13"
+                          Margin="0,0,0,15">
+                    <ComboBoxItem Content="Tous"/>
+                    <ComboBoxItem Content="info"/>
+                    <ComboBoxItem Content="alerte"/>
+                    <ComboBoxItem Content="urgent"/>
+                </ComboBox>
+                <Button x:Name="AppliquerN"
+                        Content="Appliquer"
+                        Height="35"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Background="#1976D2"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="AddFilter"
+                        Cursor="Hand"/>
+
+
             </StackPanel>
         </Border>
 

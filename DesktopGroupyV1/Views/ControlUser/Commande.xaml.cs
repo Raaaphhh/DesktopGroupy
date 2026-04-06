@@ -29,10 +29,26 @@ namespace DesktopGroupyV1.Views.ControlUser
 
         private void AddFilter(object sender, RoutedEventArgs e)
         {
-            string filtre = FiltreExpedition.Text;
-            DataContext = _cvm;
-            _cvm = new CommandeViewModel(filtre);
+            if( FiltreExpedition.Text == "Tous"||FiltreNote.Text == "Tous")
+            {
+                FiltreExpedition.Text = null;
+                FiltreNote.Text = null;
+            }
+              
+            string? filtre = FiltreExpedition.Text;
+            string? filtreNote = FiltreNote.Text;
 
+            _cvm = new CommandeViewModel(filtre, filtreNote);
+            DataContext = _cvm;
         }
+
+        //private void AddFilterNote(object sender, RoutedEventArgs e)
+        //{
+        //    string? filtre = FiltreExpedition.Text;
+        //    string? filtreNote = FiltreNote.Text;
+        //    _cvm = new CommandeViewModel(filtre, filtreNote);
+        //    DataContext = _cvm;
+        //}
+
     }
 }

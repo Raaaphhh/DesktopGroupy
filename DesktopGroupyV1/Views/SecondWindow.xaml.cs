@@ -52,12 +52,6 @@ namespace DesktopGroupyV1.Views
             ContentArea.Content = new Historique();
         }
 
-        public void OpenExpedition(object sender, RoutedEventArgs e)
-        {
-            ContentArea.Visibility= Visibility.Visible;
-            ContentArea.Content = new Expeditions();
-        }
-
         public void OpenMessageClient(object sender, RoutedEventArgs e)
         {
             ContentArea.Visibility= Visibility.Visible;
@@ -68,6 +62,11 @@ namespace DesktopGroupyV1.Views
         {
             ContentArea.Visibility = Visibility.Visible;
             ContentArea.Content = new SignalementProduit();
+        }
+
+        private void OpenExpedition(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
