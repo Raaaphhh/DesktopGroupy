@@ -142,6 +142,12 @@ namespace DesktopGroupyV1.Data
                 .HasForeignKey(e => e.IdPrevente)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Expedition>()
+                .HasOne(e => e.Prevente)
+                .WithMany()
+                .HasForeignKey(e => e.IdNotes)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // Une prévente = une expédition unique
             modelBuilder.Entity<Expedition>()
                 .HasIndex(e => e.IdPrevente)

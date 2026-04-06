@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace DesktopGroupyV1.Models
 {
@@ -41,6 +42,13 @@ namespace DesktopGroupyV1.Models
 
         [ForeignKey("IdClient")]
         public virtual Client Client { get; set; }
+
+        [ForeignKey("IdNotes")]
+        public virtual NoteInterne NoteInterne { get; set; }
+
+        // Navigation vers les expéditions (une prevente peut avoir plusieurs expéditions)
+   //     [InverseProperty("Prevente")]
+    //    public virtual ICollection<Expedition> Expeditions { get; set; }
 
     }
 }

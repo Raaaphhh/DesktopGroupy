@@ -1,16 +1,19 @@
-﻿using System;
+﻿using DesktopGroupyV1.Data;
+using DesktopGroupyV1.Models;
+using DesktopGroupyV1.Views;
+using DesktopGroupyV1.Views.ControlUser;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
-using DesktopGroupyV1.Models;
-using DesktopGroupyV1.Views;
-using System.ComponentModel;
-using Microsoft.EntityFrameworkCore;
-using DesktopGroupyV1.Data;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace DesktopGroupyV1.ViewModels
@@ -19,30 +22,66 @@ namespace DesktopGroupyV1.ViewModels
     {
         public readonly GroupyContext _context; 
         public ObservableCollection<Prevente> Preventes { get; set; }
+       // public List<Expedition> StatutExp { get; set; }
 
-        public CommandeViewModel()
+
+        public CommandeViewModel(string? filtre = null, string? filtreNote = null)
         {
             _context = new GroupyContext();
-            Preventes = new ObservableCollection<Prevente>(GetPrevente());
+            Preventes = new ObservableCollection<Prevente>(GetPrevente(filtre, filtreNote));
         }
 
-        public List<Prevente> GetPrevente()
+        public List<Prevente> GetPrevente(string? filtre = null, string? filtreNote = null)
         {
-            try
+            if (filtre != null && filtreNote == null)
             {
-                int vendeurConnected = Session.currentVendeurConnected.Id; 
+                int vendeurConnected = Session.currentVendeurConnected.Id;
                 Preventes = new ObservableCollection<Prevente>(_context.Preventes
-                                                        .Where(p => p.Produit.IdVendeur == vendeurConnected)
-                                                        .Include(p => p.Produit)
-                                                        .ToList());
+                                                         .Include(prv => prv.Produit)
+                                                         .ThenInclude(prv => prv.Vendeur)
+                                                         .Include(v => v.NoteInterne)
+                                                         .ThenInclude(v => v.Expeditions)                                                         
+                                                         .Where(prev => prev.Produit.IdVendeur == vendeurConnected && prev.NoteInterne.Expeditions.Any(e => e.Statut == filtre))
+                                                         .ToList());
                 return Preventes.ToList();
             }
-            catch (Exception ex) {
-                Console.WriteLine($"Error fetching Prevente data: {ex.Message}");
-                return new List<Prevente>();
-
+            else if ( filtre == null && filtreNote != null)
+            {
+                int vendeurConnected = Session.currentVendeurConnected.Id;
+                Preventes = new ObservableCollection<Prevente>(_context.Preventes
+                                                         .Include(prv => prv.Produit)
+                                                         .ThenInclude(prv => prv.Vendeur)
+                                                         .Include(v => v.NoteInterne)
+                                                         .ThenInclude(v => v.Expeditions)
+                                                         .Where(prev => prev.Produit.IdVendeur == vendeurConnected && prev.NoteInterne.Expeditions.Any(e => e.NoteInterne.TypeNote == filtreNote))
+                                                         .ToList());
+                return Preventes.ToList();
             }
+            else if (filtre == null )
+            {
+                try
+                {
+
+                    int vendeurConnected = Session.currentVendeurConnected.Id;
+                    Preventes = new ObservableCollection<Prevente>(_context.Preventes
+                                                             .Include(prv => prv.Produit)
+                                                             .ThenInclude(prv => prv.Vendeur)
+                                                             .Include(v => v.NoteInterne)
+                                                             .ThenInclude(v => v.Expeditions)
+                                                             .Where(prev => prev.Produit.IdVendeur == vendeurConnected)
+                                                             .ToList());
+
+
+                    return Preventes.ToList();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error fetching Prevente data: {ex.Message}");
+                    return new List<Prevente>();
+                }
+            }
+
+            return new List<Prevente>();
         }
     }
 }
- 

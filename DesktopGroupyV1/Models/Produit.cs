@@ -67,5 +67,12 @@ namespace DesktopGroupyV1.Models
         public virtual Categorie Categorie { get; set; }
 
         public ICollection<Stock> Stocks { get; set; }
+
+        //public  ICollection<Prevente> Preventes { get; set; }
+
+
+
+
+
     }
 }

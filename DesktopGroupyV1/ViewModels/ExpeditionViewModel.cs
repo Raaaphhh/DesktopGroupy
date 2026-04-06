@@ -29,18 +29,20 @@ namespace DesktopGroupyV1.ViewModels
                 int vendeurConnected = Session.currentVendeurConnected.Id;
 
                 var expeditions = _context.Expeditions
-                    .Where(e => e.IdNotes != null)
-                    .Include(e => e.NoteInterne)
-                    .Where(e => e.NoteInterne.IdVendeur == vendeurConnected && statut.Contains(e.Statut))
-                    .AsNoTracking()
+                    .Include(e => e.Prevente)
+                    .ThenInclude(p => p.NoteInterne)
+                    .Where(e => e.Prevente.NoteInterne != null && e.Prevente.NoteInterne.IdVendeur == vendeurConnected && statut.Contains(e.Statut))  
                     .ToList();
+
+//                var note = _context.NotesInternes
+ //                   .Where(n => n.IdVendeur == vendeurConnected)
+   //                 .ToList();
 
                 Expeditions = new ObservableCollection<Expedition>(expeditions);
                 return expeditions;
             }
             catch (Exception ex)
             {
-                // Logger l'erreur pour diagnostiquer
                 System.Diagnostics.Debug.WriteLine($"Erreur GetExpeditions: {ex.Message}");
                 return new List<Expedition>();
             }
