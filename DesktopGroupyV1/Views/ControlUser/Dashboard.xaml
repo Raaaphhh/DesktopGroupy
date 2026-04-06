@@ -14,7 +14,7 @@
             <!--<RowDefinition Height="*" />-->
         </Grid.RowDefinitions>
 
-        <uc:KPIs Grid.Row="0" Margin="10"/>
+        <uc:KPIs Grid.Row="0" Grid.RowSpan="2" Margin="10"/>
 
     </Grid>
 </UserControl>

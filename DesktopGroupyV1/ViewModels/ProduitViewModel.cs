@@ -111,21 +111,35 @@ namespace DesktopGroupyV1.ViewModels
 
         private void ChargerGraphique()
         {
-            var model = new PlotModel { Title = "Evolution des ventes" };
+            var model = new PlotModel
+            {
+                Title                = "Évolution du chiffre d'affaires",
+                TitleFontSize        = 13,
+                Background           = OxyColors.Transparent,
+                PlotAreaBorderColor  = OxyColor.FromRgb(229, 231, 235),
+            };
 
             model.Axes.Add(new CategoryAxis
             {
-                Position = AxisPosition.Bottom,
-                ItemsSource = new[] { "jan", "fev", "mar", "avri", "mai", "Juin", "Juil", "Aout", "sept", "oct", "nov", "dec" },
-                Title = "Mois"
+                Position      = AxisPosition.Bottom,
+                ItemsSource   = new[] { "Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc" },
+                FontSize      = 11,
+                TextColor     = OxyColor.FromRgb(120, 130, 145),
+                TicklineColor = OxyColors.Transparent,
+                AxislineColor = OxyColor.FromRgb(229, 231, 235),
             });
 
             model.Axes.Add(new LinearAxis
             {
-                Position = AxisPosition.Left,
-                StringFormat = "C0",
-                MajorGridlineStyle = LineStyle.Dot,
-                Title = "Chiffre d'affaires"
+                Position            = AxisPosition.Left,
+                StringFormat        = "C0",
+                MajorGridlineStyle  = LineStyle.Dot,
+                MajorGridlineColor  = OxyColor.FromRgb(229, 231, 235),
+                MinorGridlineStyle  = LineStyle.None,
+                AxislineColor       = OxyColors.Transparent,
+                TicklineColor       = OxyColors.Transparent,
+                FontSize            = 11,
+                TextColor           = OxyColor.FromRgb(120, 130, 145),
             });
 
             var ventesParMois = _db.Preventes
@@ -136,19 +150,24 @@ namespace DesktopGroupyV1.ViewModels
                 .OrderBy(g => g.Key)
                 .ToDictionary(g => g.Key, g => g.Sum(p => p.Produit.PrixGroupe));
 
-            var serie = new LineSeries
+            var serie = new AreaSeries
             {
-                Title = "CA sur l'année",
-                MarkerType = MarkerType.Circle,
-                MarkerSize = 5,
-                MarkerStroke = OxyColors.RoyalBlue,
-                StrokeThickness = 2,
+                Title                 = "CA mensuel",
+                Color                 = OxyColor.FromRgb(33, 150, 243),
+                Fill                  = OxyColor.FromAColor(40, OxyColor.FromRgb(33, 150, 243)),
+                MarkerType            = MarkerType.Circle,
+                MarkerSize            = 5,
+                MarkerFill            = OxyColor.FromRgb(33, 150, 243),
+                MarkerStroke          = OxyColors.White,
+                MarkerStrokeThickness = 1.5,
+                StrokeThickness       = 2.5,
+                TrackerFormatString   = "{0}\n{2}: {4:C0}",
             };
 
             for (int mois = 1; mois <= 12; mois++)
             {
                 decimal valeur = ventesParMois.ContainsKey(mois) ? ventesParMois[mois] : 0;
-                serie.Points.Add(new DataPoint(mois -1, (double)valeur));
+                serie.Points.Add(new DataPoint(mois - 1, (double)valeur));
             }
 
             model.Series.Add(serie);
