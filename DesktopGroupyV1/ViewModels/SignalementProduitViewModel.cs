@@ -11,12 +11,12 @@ namespace DesktopGroupyV1.ViewModels
         private readonly GroupyContext _context;
         private int IdVendeurCo => Session.currentVendeurConnected.Id;
 
-        public ObservableCollection<Signalement> Signalements { get; set; }
+        public ObservableCollection<Signalements> Signalements { get; set; }
 
         public SignalementProduitViewModel()
         {
             _context = new GroupyContext();
-            Signalements = new ObservableCollection<Signalement>();
+            Signalements = new ObservableCollection<Signalements>();
             ChargerSignalements();
         }
 
@@ -37,7 +37,7 @@ namespace DesktopGroupyV1.ViewModels
                 Signalements.Add(s);
         }
 
-        public bool ChangerStatut(Signalement signalement, string nouveauStatut)
+        public bool ChangerStatut(Signalements signalement, string nouveauStatut)
         {
             try
             {

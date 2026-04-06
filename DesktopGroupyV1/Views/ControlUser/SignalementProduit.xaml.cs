@@ -32,7 +32,7 @@ namespace DesktopGroupyV1.Views.ControlUser
 
         private void GridSignalements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var signalement = GridSignalements.SelectedItem as Signalement;
+            var signalement = GridSignalements.SelectedItem as Signalements;
             bool hasSelection = signalement != null;
 
             BtnResoudre.IsEnabled = hasSelection && signalement!.Statut != "résolu";
@@ -44,7 +44,7 @@ namespace DesktopGroupyV1.Views.ControlUser
 
         private void BtnResoudre_Click(object sender, RoutedEventArgs e)
         {
-            var signalement = GridSignalements.SelectedItem as Signalement;
+            var signalement = GridSignalements.SelectedItem as Signalements;
             if (signalement == null) return;
 
             bool ok = _vm.ChangerStatut(signalement, "résolu");
@@ -63,7 +63,7 @@ namespace DesktopGroupyV1.Views.ControlUser
 
         private void BtnRejeter_Click(object sender, RoutedEventArgs e)
         {
-            var signalement = GridSignalements.SelectedItem as Signalement;
+            var signalement = GridSignalements.SelectedItem as Signalements;
             if (signalement == null) return;
 
             bool ok = _vm.ChangerStatut(signalement, "rejeté");
